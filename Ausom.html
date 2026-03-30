@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ausom — 品牌定位与营销矩阵文档</title>
+<style>
+
+:root {
+  --blk: #0a0908;
+  --blk2: #111009;
+  --blk3: #1a1916;
+  --blk4: #222120;
+  /* Ausom 品牌核心色：闪电黄 */
+  --o: #FFB800; 
+  --o2: #FFCC33;
+  --odim: rgba(255,184,0,0.12);
+  --oborder: rgba(255,184,0,0.25);
+  --w: #f0ebe2;
+  --w2: #c8c2b8;
+  --w3: #857e75;
+  --gold: #c9a84c;
+  --blue: #4a9fd4;
+  --red: #e05050;
+  --green: #4caf7a;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+::-webkit-scrollbar { width:4px; height: 6px; }
+::-webkit-scrollbar-thumb { background:var(--o); border-radius: 4px; }
+
+body {
+  background:var(--blk);
+  color:var(--w);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:56px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px;
+  background:rgba(10,9,8,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,184,0,0.15);
+}
+.logo-nav {
+  font-family:'Arial Black','Impact',sans-serif;
+  font-size:22px; font-weight:700; letter-spacing:4px;
+  color:var(--o);
+}
+.nav-links { display:flex; gap:0; }
+.nav-links a {
+  font-size:12px; font-weight: 500; letter-spacing:1px;
+  color:var(--w2); text-decoration:none;
+  padding:6px 16px;
+  border-left:1px solid rgba(255,255,255,0.05);
+  transition:.3s;
+}
+.nav-links a:hover { color:var(--o); background: var(--odim); }
+
+/* ── COVER ── */
+.cover {
+  min-height:90vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:0 60px 80px;
+  position:relative; overflow:hidden;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(255,184,0,0.08) 0%, transparent 65%),
+              linear-gradient(170deg, #0a0908 0%, #161410 100%);
+}
+.cover-lines {
+  position:absolute; inset:0; pointer-events:none;
+  background-image: linear-gradient(rgba(255,184,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,184,0,0.03) 1px, transparent 1px);
+  background-size:64px 64px;
+}
+.cover-h1 {
+  font-family:'Arial Black','Impact',sans-serif;
+  font-size:clamp(56px,10vw,120px);
+  font-weight:700; line-height:.9; letter-spacing:-2px;
+  color:var(--w); margin-bottom: 20px;
+}
+.cover-h1 em { color:var(--o); font-style:normal; }
+.cover-desc {
+  max-width:680px; font-size:16px; color:var(--w2); line-height:1.9;
+}
+
+/* ── SECTION BASE ── */
+.sec { padding:100px 60px; }
+.alt { background:var(--blk2); }
+.alt2 { background:var(--blk3); }
+
+.sec-label {
+  font-family:'Courier New',Courier,monospace;
+  font-size:11px; font-weight: bold; letter-spacing:3px;
+  color:var(--o); margin-bottom:16px;
+  display:flex; align-items:center; gap:12px;
+}
+.sec-label::after { content:''; flex:1; max-width:80px; height:2px; background:var(--o); opacity:.5; }
+h2 {
+  font-family:'Arial Black','Impact',sans-serif;
+  font-size:clamp(28px,4vw,48px); font-weight:600;
+  letter-spacing:-1px; margin-bottom:48px; display:flex; align-items:center; gap:12px;
+}
+
+/* ── GRID CARDS ── */
+.brand-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
+.brand-card {
+  background:var(--blk4); padding:40px 32px;
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+  transition:all .3s ease;
+}
+.brand-card:hover { border-color:var(--o); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.brand-card h3 { color:var(--o); margin-bottom:16px; font-size:18px; font-weight:600; display:flex; align-items:center; gap:8px;}
+.brand-card p { font-size:14px; color:var(--w2); line-height:1.8; }
+
+/* ── LINKS & CLICKABLES ── */
+a.link-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,184,0,0.1);
+  color: var(--o); text-decoration: none; border-radius: 6px;
+  font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold;
+  border: 1px solid rgba(255,184,0,0.3); transition: .2s;
+}
+a.link-btn:hover { background: var(--o); color: var(--blk); }
+
+.interactive-list { display:flex; flex-direction:column; gap:12px; margin-top: 16px; }
+.interactive-card {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px; background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.06); text-decoration:none;
+  transition:all .3s ease; border-radius:8px;
+}
+.interactive-card:hover { background:var(--odim); border-color:var(--o); transform:translateX(6px); }
+.ic-title { font-size:16px; font-weight:bold; color:var(--w); margin-bottom: 4px; display:flex; align-items:center; gap:8px;}
+.interactive-card:hover .ic-title { color:var(--o); }
+.ic-subtitle { font-size:12px; color:var(--w3); font-family: monospace; }
+.ic-desc { font-size:13px; color:var(--w2); margin-top: 8px; line-height: 1.6; }
+.ic-arrow { color:var(--o); font-size:20px; opacity:0; transform:translateX(-10px); transition:.3s; }
+.interactive-card:hover .ic-arrow { opacity:1; transform:translateX(0); }
+
+/* ── PRODUCT SHOWCASE (CARDS) ── */
+.store-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;
+}
+.p-card {
+  background: var(--blk4); padding: 24px; position: relative; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05); transition: .3s; display: flex; flex-direction: column;
+}
+.p-card:hover { border-color: var(--o); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.p-name-link {
+  font-family: 'Arial Black', sans-serif; font-size: 24px; color: var(--w);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4px;
+  transition: .2s; letter-spacing: 1px;
+}
+.p-name-link:hover { color: var(--o); }
+.p-sub { font-family: monospace; font-size: 11px; color: var(--o); margin-bottom: 16px; }
+.p-price { font-size: 18px; font-weight: bold; color: var(--w2); margin-bottom: 16px; }
+.p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.p-tag { font-size: 11px; padding: 4px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--w3); font-weight: 500; }
+.p-tag.highlight { background: var(--odim); color: var(--o); border: 1px solid var(--oborder); }
+
+/* ── DETAILED MATRIX TABLE ── */
+.matrix-wrap { overflow-x: auto; margin-bottom: 40px; background: var(--blk3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+.matrix-wrap h3 { padding: 20px 24px; margin:0; border-bottom: 1px solid rgba(255,184,0,0.3); color: var(--w); background: var(--blk4); display:flex; align-items:center; justify-content:space-between; font-size: 18px;}
+.matrix { width: 100%; min-width: 1200px; border-collapse: collapse; }
+.matrix th { background: rgba(0,0,0,0.2); color: var(--o); padding: 16px 20px; text-align: left; font-size: 13px; font-weight: 600; letter-spacing: 1px; white-space: nowrap; border-bottom: 1px solid rgba(255,184,0,0.2); }
+.matrix td { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--w2); vertical-align: middle; line-height: 1.6; }
+.matrix tbody tr:hover td { background: rgba(255,184,0,0.05); }
+.matrix td strong { color: var(--w); font-weight: 600; }
+.buy-btn { display: inline-block; background: var(--o); color: var(--blk); padding: 6px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 12px; transition: .2s; text-align: center; white-space: nowrap; }
+.buy-btn:hover { background: var(--w); box-shadow: 0 0 10px rgba(255,184,0,0.5); }
+
+/* ── PRINCIPLES ── */
+.principles { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
+.prin-card {
+  background:var(--blk4); padding:30px 24px; border-radius: 8px;
+  position:relative; overflow:hidden; border: 1px solid rgba(255,255,255,0.05);
+}
+.prin-n {
+  font-family:'Arial Black', sans-serif; font-size:72px; font-weight:700;
+  color:rgba(255,184,0,0.05); line-height:1;
+  position:absolute; top:10px; right:16px;
+}
+.prin-title {
+  font-family:'Arial Black', sans-serif; font-size:16px; font-weight:500;
+  color:var(--o); letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:12px; position:relative;
+}
+.prin-body { font-size:13px; color:var(--w2); line-height:1.8; position:relative; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .sec { padding:60px 24px; }
+  .cover { padding:0 24px 60px; }
+  .cover-h1 { font-size: 48px; }
+  .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-nav">AUSOM</div>
+  <div class="nav-links">
+    <a href="#brand">品牌概述</a>
+    <a href="#tech">核心技术</a>
+    <a href="#target">客群渠道</a>
+    <a href="#highlights">明星阵容</a>
+    <a href="#matrix-table">产品矩阵列表</a>
+    <a href="#strategy">区域策略</a>
+    <a href="#media">社媒与媒体</a>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="cover-lines"></div>
+  <div class="cover-h1">AU<em>S</em>OM<br>ELECTRIC SCOOTERS</div>
+  <p class="cover-desc">
+    全地形高性能电动滑板车品牌。以 DTC 独立站直营结合本土化渠道，将行业前沿技术全面下放。美国官网主导性能极限，欧洲矩阵专注合规与多场景深度渗透。
+  </p>
+  <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+    <a href="#matrix-table" class="link-btn">⬇ 查看精细产品矩阵表格</a>
+    <a href="#media" class="link-btn">⬇ 查看社媒与合作媒体网络</a>
+  </div>
+</div>
+
+<section class="sec alt" id="brand">
+  <div class="sec-label">01 — 品牌概述</div>
+  <h2>💡 WHAT IS AUSOM</h2>
+  <div class="brand-grid">
+    <div class="brand-card">
+      <h3>🎯 品牌定位</h3>
+      <p>Ausom 是一个以"性能民主化"为核心价值的出行品牌。用远低于竞品的价格，提供极速、长续航及旗舰级的全地形骑行体验。核心用户画像是追求性能、注重性价比的成年骑手，在通勤与越野之间寻找一辆无短板的代步利器。</p>
+    </div>
+    <div class="brand-card">
+      <h3>🏰 竞争护城河</h3>
+      <p>品牌竞争壁垒建立在三个维度：<b>规格溢出</b>（同价位最强参数）、<b>全地形能力</b>（城市通勤与越野并重）、<b>直营 DTC</b>（无中间商溢价，官网与本地仓直发）。通过大幅度降维打击，产品力已在极客与权威评测圈层中站稳脚跟。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tech">
+  <div class="sec-label">02 — 核心技术四大模块</div>
+  <h2>🛠️ CORE TECHNOLOGIES</h2>
+  <div class="brand-grid">
+    <div class="brand-card">
+      <h3>🛡️ 安全 (Safety)</h3>
+      <p>全系中高端车型搭载 <b>E-ABE制动辅助系统</b> 与双重 <b>液压刹车制动</b>，彻底取代传统且易热衰减的机械线刹。不仅提供线性、灵敏的制动手感，更能在高速行驶与泥泞湿滑路况下实现毫秒级防抱死响应，为骑行安全铸就绝对防线。</p>
+    </div>
+    <div class="brand-card">
+      <h3>🚀 性能 (Performance)</h3>
+      <p>越野旗舰全面应用 <b>高压系统</b>，打破传统电滑板车的效能瓶颈。高压架构带来更低的线路损耗与发热率，从而实现更高效的能量转化，支撑起惊人的极速指标与超长续航表现，满足长距离拉力与重度越野需求。</p>
+    </div>
+    <div class="brand-card">
+      <h3>⚡ 动力 (Power)</h3>
+      <p>核心性能车系标配强悍的 <b>双电机系统</b>。狂暴的峰值扭矩输出不仅带来令人血脉喷张的推背感，更提供了越级的爬坡能力。无惧城市陡坡与崎岖林道，轻松赋能全地形探索与大体重骑手。</p>
+    </div>
+    <div class="brand-card">
+      <h3>🛋️ 舒适 (Comfort)</h3>
+      <p>独家深度研发并引入 <b>Shcofree悬挂系统</b>（完美结合 <b>摇臂悬挂 + 弹簧减震</b> 的双重优势）。经过上万次底盘与避震阻尼调校，大幅过滤城市减速带的颠簸与非铺装路面的剧烈冲击，让每一次骑行如履平地。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="target">
+  <div class="sec-label">03 — 客户定位与渠道匹配</div>
+  <h2>🎯 AUDIENCE & CHANNELS</h2>
+  <div class="brand-grid">
+    <div class="brand-card">
+      <h3>A类：极致性能发烧友</h3>
+      <p><b>画像：</b> 追求速度极限的极客玩家、重度越野爱好者。<br>
+      <b>匹配渠道：</b> 美国官网 (ausomstore.com)。购买决策高度依赖 YouTube 极速测试与参数横评。</p>
+    </div>
+    <div class="brand-card">
+      <h3>B类：高性价比进阶者</h3>
+      <p><b>画像：</b> 需要双电机应对坡道或周末郊游，但预算受限的用户。<br>
+      <b>匹配渠道：</b> 波兰 (pl)、法国 (fr) 独立站。依赖本地语言评测与区域社群口碑裂变。</p>
+    </div>
+    <div class="brand-card">
+      <h3>C类：城市通勤刚需客</h3>
+      <p><b>画像：</b> 寻求解决最后五公里、必须合法合规上路的短途通勤者。<br>
+      <b>匹配渠道：</b> 欧洲主站 (eu) 及速卖通。极其看重德国 ABE 认证标识及便携折叠属性。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt2" id="highlights">
+  <div class="sec-label">04 — 明星阵容展示</div>
+  <h2>⭐ HOT SELLERS & NEW ARRIVALS</h2>
+  <p style="color:var(--w2); margin-bottom:30px;">点击产品名称即可直接跳转至官方购买页面。</p>
+
+  <h3 style="color:var(--w); margin-bottom: 20px; display:flex; align-items:center; gap:8px;">🔥 热卖爆款矩阵 (Best Sellers)</h3>
+  <div class="store-grid" style="margin-bottom: 40px;">
+    <div class="p-card">
+      <a href="https://ausomstore.com/products/ausom-dt2-pro-e-scooter" target="_blank" class="p-name-link">DT2 Pro ↗</a>
+      <div class="p-sub">超长续航王 · 全球销量核心</div>
+      <div class="p-price">$1,149 / €949</div>
+      <div class="p-tags"><span class="p-tag highlight">71英里极限续航</span><span class="p-tag highlight">液压刹车制动</span><span class="p-tag">双电机系统</span></div>
+    </div>
+    <div class="p-card">
+      <a href="https://ausomstore.com/products/ausom-l2-max-dual-electric-scooter" target="_blank" class="p-name-link">L2 Max Dual ↗</a>
+      <div class="p-sub">全地形高性价比双驱动霸主</div>
+      <div class="p-price">$899 / €749</div>
+      <div class="p-tags"><span class="p-tag highlight">双电机系统</span><span class="p-tag">3200W峰值</span><span class="p-tag">强悍推背感</span></div>
+    </div>
+    <div class="p-card">
+      <a href="https://ausomstore.com/products/ausom-l1-electric-scooter" target="_blank" class="p-name-link">L1 ↗</a>
+      <div class="p-sub">城市轻骑 · 闭眼入通勤款</div>
+      <div class="p-price">$599 / €499</div>
+      <div class="p-tags"><span class="p-tag highlight">摇臂悬挂</span><span class="p-tag">E-ABE制动辅助系统</span><span class="p-tag">轻量化折叠</span></div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--w); margin-bottom: 20px; display:flex; align-items:center; gap:8px;">✨ 2026重磅新品 (New Arrivals)</h3>
+  <div class="store-grid">
+    <div class="p-card">
+      <a href="https://ausomstore.com/products/ausom-gosoul-2-pro-dual-motor-e-scooter" target="_blank" class="p-name-link">Gosoul 2 Pro ↗</a>
+      <div class="p-sub">旗舰级悬挂与双驱动新品</div>
+      <div class="p-price">$849 / €549</div>
+      <div class="p-tags"><span class="p-tag highlight">shcofree悬挂系统</span><span class="p-tag highlight">双电机系统</span></div>
+    </div>
+    <div class="p-card">
+      <a href="https://ausomstore.com/products/ausom-k20-pro-dual-motor-e-scooter" target="_blank" class="p-name-link">K20 Pro ↗</a>
+      <div class="p-sub">双驱门槛杀手 (原Laluz 2 Pro)</div>
+      <div class="p-price">$729 / €529</div>
+      <div class="p-tags"><span class="p-tag highlight">双电机系统</span><span class="p-tag">超强性价比</span></div>
+    </div>
+    <div class="p-card">
+      <a href="https://www.ausomstore.eu/products/ausom-gosoul-2-electric-scooter" target="_blank" class="p-name-link">Gosoul 2 ↗</a>
+      <div class="p-sub">单电机越野下探体验款</div>
+      <div class="p-price">~$699 / €529</div>
+      <div class="p-tags"><span class="p-tag highlight">shcofree悬挂系统</span><span class="p-tag">越野入门</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="matrix-table">
+  <div class="sec-label">05 — 全系详细产品矩阵 (表单)</div>
+  <h2>📋 DETAILED PRODUCT MATRIX</h2>
+  
+  <div class="matrix-wrap">
+    <h3>🌐 ausomstore.com (US Market) <span style="font-size:12px; color:var(--o); font-weight:normal; border:1px solid var(--o); padding:2px 8px; border-radius:12px;">DTC 无限速战略</span></h3>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>产品型号</th>
+          <th>售价</th>
+          <th>动力/最高时速</th>
+          <th>电池与续航</th>
+          <th>悬挂系统</th>
+          <th>制动系统</th>
+          <th>核心亮点</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>F1 Max</strong></td>
+          <td>$1,499</td>
+          <td>双电机 1400W×2<br><span style="color:var(--w3)">最高时速 45mph</span></td>
+          <td>高压系统 60V 20.8Ah<br><span style="color:var(--w3)">续航达 62 miles</span></td>
+          <td>四弹簧全避震</td>
+          <td>液压刹车双系统</td>
+          <td>性能天花板、发烧友终极之选</td>
+          <td><a href="https://ausomstore.com/products/ausom-f1-max-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>DT2 Pro</strong></td>
+          <td>$1,149</td>
+          <td>双电机系统 1456W×2<br><span style="color:var(--w3)">最高时速 42mph</span></td>
+          <td>高压系统 52V 23.4Ah<br><span style="color:var(--w3)">极限续航 71 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>液压刹车制动</td>
+          <td>全系续航最长、参数降维打击</td>
+          <td><a href="https://ausomstore.com/products/ausom-dt2-pro-e-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>SR1</strong></td>
+          <td>$999</td>
+          <td>双电机系统 1000W×2<br><span style="color:var(--w3)">最高时速 41mph</span></td>
+          <td>高压系统 52V 20.8Ah<br><span style="color:var(--w3)">续航 54-59 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>液压刹车制动</td>
+          <td>46%强悍爬坡能力</td>
+          <td><a href="https://ausomstore.com/products/ausom-sr1-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2 Max Dual</strong></td>
+          <td>$899</td>
+          <td>双电机系统 (3200W峰值)<br><span style="color:var(--w3)">最高时速 38mph</span></td>
+          <td>48V 20.8Ah<br><span style="color:var(--w3)">续航 56 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>销量霸主、全地形越野首选</td>
+          <td><a href="https://ausomstore.com/products/ausom-l2-max-dual-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Gosoul 2 Pro</strong></td>
+          <td>$849</td>
+          <td>双电机系统 1400W×2<br><span style="color:var(--w3)">最高时速 36mph</span></td>
+          <td>48V 18Ah<br><span style="color:var(--w3)">续航 56 miles</span></td>
+          <td><span style="color:var(--o)">Shcofree悬挂系统</span></td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>2026越野新品、极致通过性</td>
+          <td><a href="https://ausomstore.com/products/ausom-gosoul-2-pro-dual-motor-e-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>K20 Pro</strong><br><span style="font-size:10px;color:var(--w3)">(原Laluz 2 Pro)</span></td>
+          <td>$729</td>
+          <td>双电机系统 1000W×2<br><span style="color:var(--w3)">最高时速 ~35mph</span></td>
+          <td>48V 18Ah<br><span style="color:var(--w3)">续航 ~50 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹系统</td>
+          <td>入门级双电机性能守门员</td>
+          <td><a href="https://ausomstore.com/products/ausom-k20-pro-dual-motor-e-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2 Max</strong></td>
+          <td>$799</td>
+          <td>单电机 1000W<br><span style="color:var(--w3)">最高时速 ~31mph</span></td>
+          <td>48V 20.8Ah<br><span style="color:var(--w3)">续航达 56 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>长续航全能通勤款</td>
+          <td><a href="https://ausomstore.com/products/ausom-l2-max-electric-scooter-1" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L1</strong></td>
+          <td>$599</td>
+          <td>单电机 800W<br><span style="color:var(--w3)">最高时速 ~28mph</span></td>
+          <td>48V 15.6Ah<br><span style="color:var(--w3)">续航达 43 miles</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>极致轻巧的城市代步工具</td>
+          <td><a href="https://ausomstore.com/products/ausom-l1-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="matrix-wrap">
+    <h3>🇪🇺 ausomstore.eu (EU Market) <span style="font-size:12px; color:var(--o); font-weight:normal; border:1px solid var(--o); padding:2px 8px; border-radius:12px;">合规通勤与场地越野</span></h3>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>产品型号</th>
+          <th>售价</th>
+          <th>动力/最高时速</th>
+          <th>电池与续航</th>
+          <th>悬挂系统</th>
+          <th>制动系统</th>
+          <th>核心亮点</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>F1 Max</strong></td>
+          <td>€1,299</td>
+          <td>双电机 1400W×2<br><span style="color:var(--w3)">极速 72km/h</span></td>
+          <td>高压系统 60V 20.8Ah<br><span style="color:var(--w3)">续航 100km</span></td>
+          <td>四弹簧全避震</td>
+          <td>液压刹车制动</td>
+          <td>场地越野私人玩家首选</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-f1-max-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>DT2 Pro</strong></td>
+          <td>€949</td>
+          <td>双电机系统 1100W×2<br><span style="color:var(--w3)">极速 67km/h</span></td>
+          <td>高压系统 52V 23.4Ah<br><span style="color:var(--w3)">极限续航 114km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>液压刹车制动</td>
+          <td>欧洲越野续航天花板</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-dt2-pro-e-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>SR1</strong></td>
+          <td>€759</td>
+          <td>双电机系统 1000W×2<br><span style="color:var(--w3)">极速 66km/h</span></td>
+          <td>高压系统 52V 20.8Ah<br><span style="color:var(--w3)">续航 95km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>液压刹车制动</td>
+          <td>千元内标配液压碟刹</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-sr1-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2 Max Dual</strong></td>
+          <td>€749</td>
+          <td>双电机系统 1000W×2<br><span style="color:var(--w3)">极速 61km/h</span></td>
+          <td>48V 20.8Ah<br><span style="color:var(--w3)">续航 90km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>波兰/法国双电机销量冠军</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l2-max-dual-motor" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2 Max</strong></td>
+          <td>€649</td>
+          <td>单电机 1000W<br><span style="color:var(--w3)">极速 50km/h</span></td>
+          <td>48V 20.8Ah<br><span style="color:var(--w3)">续航 90km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>欧洲中长途合规通勤利器</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l2-max-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2 Dual</strong></td>
+          <td>€649</td>
+          <td>双电机系统 800W×2<br><span style="color:var(--w3)">极速 ~55km/h</span></td>
+          <td>48V 15.6Ah<br><span style="color:var(--w3)">续航 ~80km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹系统</td>
+          <td>EU专享双电机中端过渡款</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l2-max-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L1 Max</strong></td>
+          <td>€639</td>
+          <td>单电机 800W<br><span style="color:var(--w3)">极速 45km/h</span></td>
+          <td>20.8Ah, 48V<br><span style="color:var(--w3)">续航 ~80km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>EU专享通勤续航加强版</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l1-max-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L2</strong></td>
+          <td>€549</td>
+          <td>单电机 800W<br><span style="color:var(--w3)">极速 ~45km/h</span></td>
+          <td>15.6Ah, 48V<br><span style="color:var(--w3)">续航 ~70km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹系统</td>
+          <td>填补欧洲短途空白价格带</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l2-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Gosoul 2 Pro</strong></td>
+          <td>€549</td>
+          <td>双电机系统 1400W×2<br><span style="color:var(--w3)">极速 60km/h</span></td>
+          <td>48V 18Ah<br><span style="color:var(--w3)">续航 90km</span></td>
+          <td><span style="color:var(--o)">Shcofree悬挂系统</span></td>
+          <td>碟刹系统</td>
+          <td>2026极具竞争力新品双驱</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-gosoul-2-pro-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L1 ABE</strong></td>
+          <td>€529</td>
+          <td>单电机 500W<br><span style="color:red;font-weight:bold">硬件限速 20km/h</span></td>
+          <td>15.6Ah/20.8Ah, 48V<br><span style="color:var(--w3)">续航 ~60km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹系统</td>
+          <td><span style="color:var(--o)">德国合法上路唯一认证款</span></td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l1-abe-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>K20 Pro</strong><br><span style="font-size:10px;color:var(--w3)">(原Laluz 2 Pro)</span></td>
+          <td>€529</td>
+          <td>双电机系统 1400W×2<br><span style="color:var(--w3)">极速 60km/h</span></td>
+          <td>48V 18Ah<br><span style="color:var(--w3)">续航 90km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹系统</td>
+          <td>最便宜双马达欧洲下沉利器</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-k20-pro-k20-pro-dual-motor-e-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Gosoul 2</strong></td>
+          <td>€529</td>
+          <td>单电机 1100W<br><span style="color:var(--w3)">极速 45km/h</span></td>
+          <td>48V 13Ah<br><span style="color:var(--w3)">续航 70km</span></td>
+          <td><span style="color:var(--o)">Shcofree悬挂系统</span></td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>欧洲郊外轻越野入门款</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-gosoul-2-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>L1</strong></td>
+          <td>€499</td>
+          <td>单电机 800W<br><span style="color:var(--w3)">极速 45km/h</span></td>
+          <td>48V 15.6Ah<br><span style="color:var(--w3)">续航 70km</span></td>
+          <td>Shcofree悬挂系统</td>
+          <td>碟刹+E-ABE辅助</td>
+          <td>欧洲入门级敲门砖</td>
+          <td><a href="https://www.ausomstore.eu/products/ausom-l1-electric-scooter" target="_blank" class="buy-btn">查看 ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec alt2" id="strategy">
+  <div class="sec-label">06 — 区域营销策略</div>
+  <h2>🗺️ REGIONAL STRATEGY</h2>
+  <div class="brand-grid">
+    <div class="brand-card">
+      <h3>🇺🇸 美国 (突破极速与DTC利润)</h3>
+      <p>无速度限制法规，直接打硬核参数战。依靠高压系统与双电机碾压同级，YouTube 爬坡与极速测试为核心弹药，独立站 DTC 直营收割高利润。</p>
+    </div>
+    <div class="brand-card">
+      <h3>🇫🇷 法国 / 🇵🇱 波兰 (深耕本土化)</h3>
+      <p>建立 fr / pl 独立子站。法国强调 25km/h 城市合法通勤；波兰追求极致性价比，主推双电机 (K20 Pro) 降维打击。深度绑定本地语种 KOL 和本土电商生态。</p>
+    </div>
+    <div class="brand-card">
+      <h3>🇩🇪 德国 / 🇪🇸 西班牙 (场景与合规)</h3>
+      <p>德国市场不谈极速，唯一核心是推广带有 <b>L1 ABE</b> 官方认证的安全合规款及维护 TrustPilot 口碑；西班牙则利用气候优势，在 Instagram 铺设 365天全气候视觉营销。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="media">
+  <div class="sec-label">07 — 网站矩阵、社媒与合作媒体</div>
+  <h2>📱 INTERACTIVE MEDIA NETWORK</h2>
+  <p style="color:var(--w2); margin-bottom: 30px;">点击卡片可直接访问官方对应站点及社交媒体主页。</p>
+  
+  <div class="brand-grid">
+    <div class="brand-card" style="padding: 24px; border-top-color: var(--o);">
+      <h3>🛒 官方独立站矩阵</h3>
+      <div class="interactive-list">
+        <a href="https://ausomstore.com" target="_blank" class="interactive-card">
+          <div><div class="ic-title">美国/全球官网</div><div class="ic-subtitle">ausomstore.com</div></div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://ausomstore.eu" target="_blank" class="interactive-card">
+          <div><div class="ic-title">欧洲主站</div><div class="ic-subtitle">ausomstore.eu</div></div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://fr.ausomstore.com" target="_blank" class="interactive-card">
+          <div><div class="ic-title">法国子站 (法语区)</div><div class="ic-subtitle">fr.ausomstore.com</div></div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://pl.ausomstore.com" target="_blank" class="interactive-card">
+          <div><div class="ic-title">波兰子站 (波兰语)</div><div class="ic-subtitle">pl.ausomstore.com</div></div><div class="ic-arrow">↗</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="brand-card" style="padding: 24px; border-top-color: var(--blue);">
+      <h3>🌍 官方社媒账号矩阵</h3>
+      <div class="interactive-list">
+        <a href="https://www.youtube.com/@ausomstore" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">YouTube 频道</div><div class="ic-subtitle">@ausomstore</div>
+            <div class="ic-desc">硬核转化引擎：常态化测速与爬坡挑战。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.facebook.com/groups/ausomscooter" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">Facebook 品牌社群</div><div class="ic-subtitle">Ausom Scooter Group</div>
+            <div class="ic-desc">私域裂变阵地：50K+粉丝高活跃度交流。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.instagram.com/ausomstore/" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">Instagram 视觉专区</div><div class="ic-subtitle">@ausomstore</div>
+            <div class="ic-desc">高质量生活方式展现与全天候探索。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.tiktok.com/@ausomstore" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">TikTok 短视频</div><div class="ic-subtitle">@ausomstore</div>
+            <div class="ic-desc">碎片化视觉冲击，高效收割泛圈层流量。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="brand-card" style="padding: 24px; border-top-color: var(--gold);">
+      <h3>📰 权威合作公关媒体</h3>
+      <div class="interactive-list">
+        <a href="https://riderguide.com" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">Rider Guide</div><div class="ic-subtitle">riderguide.com</div>
+            <div class="ic-desc">北美顶级出行评测，屡次上榜年度推荐。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.autoevolution.com" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">Autoevolution</div><div class="ic-subtitle">autoevolution.com</div>
+            <div class="ic-desc">全球知名汽车类科技媒体专业背书。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.01net.com" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">01net (法国)</div><div class="ic-subtitle">01net.com</div>
+            <div class="ic-desc">法语深度测评标杆，快速打通合规信任度。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+        <a href="https://www.chip.pl" target="_blank" class="interactive-card">
+          <div>
+            <div class="ic-title">Chip.pl / Antyweb</div><div class="ic-subtitle">chip.pl</div>
+            <div class="ic-desc">波兰本土顶流媒体，极致转化的决策保障。</div>
+          </div><div class="ic-arrow">↗</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="principles">
+  <div class="sec-label">08 — 品牌核心原则</div>
+  <h2>BRAND PRINCIPLES</h2>
+  <div class="principles">
+    <div class="prin-card">
+      <div class="prin-n">01</div>
+      <div class="prin-title">规格溢出</div>
+      <div class="prin-body">每一款核心产品的参数必须超越同价位竞品。营销内容的第一任务是用客观的视觉评测让消费者相信我们的硬核差距。</div>
+    </div>
+    <div class="prin-card">
+      <div class="prin-n">02</div>
+      <div class="prin-title">测评为王</div>
+      <div class="prin-body">用户获取路径高度依赖第三方实战测评（YouTube 深度评测、Rider Guide 权威推荐、TrustPilot 真实口碑）。这倒逼产品质量和品控必须过硬。</div>
+    </div>
+    <div class="prin-card">
+      <div class="prin-n">03</div>
+      <div class="prin-title">无忧售后与物流保障</div>
+      <div class="prin-body">Ausom 坚持提供 14 天退换货政策与 2 年 VIP 制造商保修服务。配合快速的本地化发货网络，所有整车订单均享受免邮配送，覆盖美国、加拿大、欧盟及英国等核心市场，用售后打消购买疑虑。</div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding: 40px 60px; background: var(--blk2); border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+  <div style="font-family:'Arial Black', sans-serif; font-size: 24px; color: var(--o); letter-spacing: 4px; margin-bottom: 12px;">AUSOM</div>
+  <div style="font-family: monospace; font-size: 11px; color: var(--w3);">Ausom Electric Scooters · Brand Positioning & Product Matrix Doc · 2026</div>
+</footer>
+
+</body>
+</html>
